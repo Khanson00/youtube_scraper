@@ -32,5 +32,5 @@ After both codec files are downloaded, I utilized ffmpeg-python to post process 
 1. Progress bar for the ffmpeg piece
 2. Include place to change save location
 3. Change font/color theme
-4. Menu selection for video properties
+4. Menu selection for video properties and/or playlist downloads
 5. Look into decreasing the length of video encoding

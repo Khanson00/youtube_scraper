@@ -5,6 +5,7 @@ import ffmpeg
 import os
 
 
+
 # Artifact destination
 SAVE_PATH = "/users/khanson/Downloads/"
 
@@ -21,7 +22,7 @@ def download_streams(url):
 	try: 
 		my_stream = yt.streams
 		# Apply video filters to StreamQuery Object 
-		video_stream = my_stream.filter(adaptive=True,is_dash=True)
+		video_stream = my_stream.filter(adaptive=True,is_dash=True,resolution='1080p')
 		# Creates list to better read selection(s)
 		video_stream_list = list(enumerate(video_stream))
 		for i in video_stream_list:
@@ -64,8 +65,6 @@ def download_streams(url):
 		# Start downloading audio with given format to given output
 		aud_down = audio_stream[audio_stream_num].download(SAVE_PATH, "audio.mp4")
 		print("Downloaded Successfully!")
-	except IOError:
-		print("Failure during download of audio stream..")
 		print("=")
 		print("=")
 		print("Both Audio and Video files have been downloaded.\n"
@@ -74,6 +73,8 @@ def download_streams(url):
 		print("=")
 		print("=")
 		input("Press Enter to continue...")
+	except IOError:
+		print("Failure during download of audio stream..")
 		
 	# Merges audio and video downloads 
 	try:
@@ -81,7 +82,14 @@ def download_streams(url):
 		v = ffmpeg.input(vid_down) # video only
 		a = ffmpeg.input(aud_down) # audio only
 		final_artifact = ffmpeg.concat(v, a, v=1, a=1).output(os.path.join(SAVE_PATH,'{rename_file_here}.mp4')).run()
+
 		print(final_artifact)
+		print("=")
+		print("=")
+		print("Your final artifact has been completed and downloaded in: " + SAVE_PATH)
+		print("=")
+		print("=")
+		input("Press Enter to exit")
 	except IOError:
 		print("Failure while trying to parse files together...")
 
