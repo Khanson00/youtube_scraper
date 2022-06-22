@@ -1,15 +1,17 @@
-  _   _                                
- | | | | __ _ _ __  ___  ___  _ __       
- | |_| |/ _` | '_ \/ __|/ _ \| '_ \      
- |  _  | (_| | | | \__ \ (_) | | | |     
- |_| |_|\__,_|_| |_|___/\___/|_| |_|     
-  ____  _____    _    ____  __  __ _____ 
- |  _ \| ____|  / \  |  _ \|  \/  | ____|
- | |_) |  _|   / _ \ | | | | |\/| |  _|  
- |  _ <| |___ / ___ \| |_| | |  | | |___ 
- |_| \_\_____/_/   \_\____/|_|  |_|_____|
-                                         
-
+██╗  ██╗ █████╗ ███╗   ██╗███████╗ ██████╗ ███╗   ██╗    
+██║  ██║██╔══██╗████╗  ██║██╔════╝██╔═══██╗████╗  ██║    
+███████║███████║██╔██╗ ██║███████╗██║   ██║██╔██╗ ██║    
+██╔══██║██╔══██║██║╚██╗██║╚════██║██║   ██║██║╚██╗██║    
+██║  ██║██║  ██║██║ ╚████║███████║╚██████╔╝██║ ╚████║    
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝    
+                                                         
+██████╗ ███████╗ █████╗ ██████╗ ███╗   ███╗███████╗      
+██╔══██╗██╔════╝██╔══██╗██╔══██╗████╗ ████║██╔════╝      
+██████╔╝█████╗  ███████║██║  ██║██╔████╔██║█████╗        
+██╔══██╗██╔══╝  ██╔══██║██║  ██║██║╚██╔╝██║██╔══╝        
+██║  ██║███████╗██║  ██║██████╔╝██║ ╚═╝ ██║███████╗      
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚══════╝      
+                                                         
 # Youtube-scraper 
 I wanted something that would inclusively download, parse, and
 spit out a final artifact from YouTube. There are a lot of random libraries out there that have small bits of functionality, but this app only requests the url of the video you want and then displays options for the individual streams. 
@@ -20,9 +22,9 @@ After both codec files are downloaded, I utilized ffmpeg-python to post process 
 
 ## Resource(s)
 ### Pytube Library
-https://pytube.io/en/latest/index.html
+[https://pytube.io/en/latest/index.html]
 ### ffmpeg-python
-https://github.com/kkroening/ffmpeg-python
+[https://github.com/kkroening/ffmpeg-python]
 
 ## Future Ideas: 
 1. Progress bar for the ffmpeg piece
