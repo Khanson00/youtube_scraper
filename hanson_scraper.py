@@ -42,13 +42,8 @@ def download_streams(url):
 	try:
 		print("=")
 		print("=")
-		print("=")
-		print("=")
-		print("The video file is completed, we still need the audio\n"
-			  "file as a seperate layer so that quality was not\n"
-			  "sacrificed on download. We'll do that now..")
-		print("=")
-		print("=")
+		print("The video file has completed. We're now going to\n"
+			  "look at the audio codec ")
 		print("=")
 		print("=")
 		input("Press Enter to continue...")
@@ -73,13 +68,9 @@ def download_streams(url):
 		print("Failure during download of audio stream..")
 		print("=")
 		print("=")
-		print("=")
-		print("=")
 		print("Both Audio and Video files have been downloaded.\n"
 			  "At this point they need to be post-processed back\n"
 			  "into a single artifact.")
-		print("=")
-		print("=")
 		print("=")
 		print("=")
 		input("Press Enter to continue...")

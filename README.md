@@ -1,14 +1,15 @@
-    __  __                                
-   / / / /___ _____  _________  ____      
-  / /_/ / __ `/ __ \/ ___/ __ \/ __ \     
- / __  / /_/ / / / (__  ) /_/ / / / /     
-/_/ /_/\__,_/_/ /_/____/\____/_/ /_/      
-    ____  _________    ____  __  _________
-   / __ \/ ____/   |  / __ \/  |/  / ____/
-  / /_/ / __/ / /| | / / / / /|_/ / __/   
- / _, _/ /___/ ___ |/ /_/ / /  / / /___   
-/_/ |_/_____/_/  |_/_____/_/  /_/_____/   
-                                                                                                    
+  _   _                                
+ | | | | __ _ _ __  ___  ___  _ __       
+ | |_| |/ _` | '_ \/ __|/ _ \| '_ \      
+ |  _  | (_| | | | \__ \ (_) | | | |     
+ |_| |_|\__,_|_| |_|___/\___/|_| |_|     
+  ____  _____    _    ____  __  __ _____ 
+ |  _ \| ____|  / \  |  _ \|  \/  | ____|
+ | |_) |  _|   / _ \ | | | | |\/| |  _|  
+ |  _ <| |___ / ___ \| |_| | |  | | |___ 
+ |_| \_\_____/_/   \_\____/|_|  |_|_____|
+                                         
+
 # Youtube-scraper 
 I wanted something that would inclusively download, parse, and
 spit out a final artifact from YouTube. There are a lot of random libraries out there that have small bits of functionality, but this app only requests the url of the video you want and then displays options for the individual streams. 
