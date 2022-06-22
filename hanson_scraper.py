@@ -1,27 +1,18 @@
 # Importing the module(s)
-from tqdm import tqdm
-from time import sleep
 from pytube import YouTube
+from pytube.cli import on_progress
 import ffmpeg
 import os
 
-# ================
-# Status of downloads from tqdm library
-#for x in tqdm(range(1000)):
-#	time.sleep(0.01)
-# ================
 
-# ================
 # Artifact destination
 SAVE_PATH = "/users/khanson/Downloads/"
 
-# Link(s) of the video to be downloaded
-# link = "https://www.youtube.com/watch?v=dbsYBv1tt78"
-# ================
+# Main Method
 def download_streams(url):
 	# Instantiates the YouTube Object
 	try:
-		yt = YouTube(url)
+		yt = YouTube(url, on_progress_callback=on_progress)
 		print(yt.title)
 		print(yt.author)
 	except IOError:
@@ -43,7 +34,7 @@ def download_streams(url):
 		print("===============")
 		print("Starting Download of Video File...")
 		# Start downloading video with given format to given output
-		v = video_stream[video_stream_num].download(SAVE_PATH,"video.mp4")
+		vid_down = video_stream[video_stream_num].download(SAVE_PATH,"video.mp4")
 		print("Downloaded Successfully!")
 	except IOError:
 		print("Failure during download of video stream..")
@@ -76,7 +67,7 @@ def download_streams(url):
 		print("===============")
 		print("Starting Download of Audio File...")
 		# Start downloading audio with given format to given output
-		a = audio_stream[audio_stream_num].download(SAVE_PATH, "audio.mp4")
+		aud_down = audio_stream[audio_stream_num].download(SAVE_PATH, "audio.mp4")
 		print("Downloaded Successfully!")
 	except IOError:
 		print("Failure during download of audio stream..")
@@ -92,15 +83,13 @@ def download_streams(url):
 		print("=")
 		print("=")
 		input("Press Enter to continue...")
-	
-	
-	
+		
 	# Merges audio and video downloads 
 	try:
 		# Join files w/ FFmpeg and python-FFmpeg
-		v = ffmpeg.input(os.path.join(SAVE_PATH, 'video.mp4' )) # video only
-		a = ffmpeg.input(os.path.join(SAVE_PATH, 'audio.mp4')) # audio only
-		final_artifact = ffmpeg.concat(v, a, v=1, a=1).output(os.path.join(SAVE_PATH,'r.mp4')).run()
+		v = ffmpeg.input(vid_down) # video only
+		a = ffmpeg.input(aud_down) # audio only
+		final_artifact = ffmpeg.concat(v, a, v=1, a=1).output(os.path.join(SAVE_PATH,'{rename_file_here}.mp4')).run()
 		print(final_artifact)
 	except IOError:
 		print("Failure while trying to parse files together...")
