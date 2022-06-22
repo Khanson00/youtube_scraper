@@ -26,7 +26,7 @@ def download_video(url):
 		yt = YouTube(url)
 		print(yt.title)
 		print(yt.author)
-	except:
+	except IOError:
 		print("Connection Error..")
 
 	# Creates StreamQuery Object and prints to screen
@@ -40,41 +40,53 @@ def download_video(url):
 		video_stream_list = list(enumerate(video_stream))
 		for i in video_stream_list:
 			print(i)
-	except:
+	except IOError:
 		print("Error creating StreamQuery Object..")
 
 	# Prompt user for video download request
 	try: 
-		print("Select the Video Stream you want to download: ")
-		video_stream_num = int(input("Enter the Stream number: "))
+		video_stream_num = int(input("Select the Video Stream you want to download: "))
+		
+		
 		print("===============")
 		print("Starting Download of Video File...")
 		
 		# Start downloading video with given format to given output
 		video_stream[video_stream_num].download(output_path=SAVE_PATH)
 		print("Downloaded Successfully!")
-	
-	except:
+	except IOError:
 		print("Failure during download of video stream..")
 
 	# Prompt user for audio download request
 	try:
-		print("The video file is completed, we need the audio\n"
-			  "file to layer them together after the fact")
-		print("Select the Audio Stream you want to download: ")
-
+		print("=")
+		print("=")
+		print("=")
+		print("=")
+		print("The video file is completed, we still need the audio\n"
+			  "file as a seperate layer so that quality was not\n"
+			  "sacrificed on download. We'll do that now..")
+		print("=")
+		print("=")
+		print("=")
+		print("=")
+		input("Press Enter to continue...")
+		
+		my_audio_stream = yt.streams
+		
 		# Apply audio filters to StreamQuery Object 
-		audio_stream = my_stream.filter(adaptive=True,is_dash=True,audio_stream=True)
+		audio_stream = my_audio_stream.filter(only_audio=True)
 		
 		# Creates audio list to better read selection(s)
 		audio_stream_list = list(enumerate(audio_stream))
 		for i in audio_stream_list:
-			print(i)
-	except:
+			print(i) 
+	except IOError:
 		print("There is a failure retrieving the audio streams list...")
 		
+	# Prompt user for Audio input
 	try:	
-		audio_stream_num = int(input("Enter the Stream number: "))
+		audio_stream_num = int(input("Select the Audio Stream you want to download:  "))
 		print("===============")
 		print("Starting Download of Audio File...")
 		
