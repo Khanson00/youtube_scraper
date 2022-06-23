@@ -1,6 +1,7 @@
 # Importing the module(s)
 from pytube import YouTube
 from pytube.cli import on_progress
+from ffmpeg_progress_yield import FfmpegProgress
 import ffmpeg
 import os
 
@@ -79,11 +80,17 @@ def download_streams(url):
 	# Merges audio and video downloads 
 	try:
 		# Join files w/ FFmpeg and python-FFmpeg
-		v = ffmpeg.input(vid_down) # video only
-		a = ffmpeg.input(aud_down) # audio only
-		final_artifact = ffmpeg.concat(v, a, v=1, a=1).output(os.path.join(SAVE_PATH,'{rename_file_here}.mp4')).run()
+		vid_file = ffmpeg.input(vid_down) # video only
+		aud_file = ffmpeg.input(aud_down) # audio only
+		
+		
+		
+		final_artifact = ffmpeg.concat(vid_file, aud_file, v=1, a=1).output(os.path.join(SAVE_PATH,'{rename_file_here}.mp4')).run()
 
-		print(final_artifact)
+		ff = FfmpegProgress(final_artifact)
+		for progress in ff.run_command_with_progress():
+			print(f"{progress}/100")
+
 		print("=")
 		print("=")
 		print("Your final artifact has been completed and downloaded in: " + SAVE_PATH)
