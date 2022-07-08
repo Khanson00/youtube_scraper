@@ -8,7 +8,7 @@ import os
 
 
 # Artifact destination
-SAVE_PATH = "/users/khanson/Downloads/"
+SAVE_PATH = "/Users/khanson/Downloads/YouTube Videos/Currently_Downloading"
 
 # Main Method
 def download_streams(url):
@@ -23,7 +23,7 @@ def download_streams(url):
 	try: 
 		my_stream = yt.streams
 		# Apply video filters to StreamQuery Object 
-		video_stream = my_stream.filter(adaptive=True,is_dash=True,resolution='1080p')
+		video_stream = my_stream.filter(adaptive=True,is_dash=True)
 		# Creates list to better read selection(s)
 		video_stream_list = list(enumerate(video_stream))
 		for i in video_stream_list:
@@ -83,13 +83,8 @@ def download_streams(url):
 		vid_file = ffmpeg.input(vid_down) # video only
 		aud_file = ffmpeg.input(aud_down) # audio only
 		
-		
-		
-		final_artifact = ffmpeg.concat(vid_file, aud_file, v=1, a=1).output(os.path.join(SAVE_PATH,'{rename_file_here}.mp4')).run()
+		ffmpeg.concat(vid_file, aud_file, v=1, a=1).output(os.path.join(SAVE_PATH,'{rename_file_here}.mp4')).run()
 
-		ff = FfmpegProgress(final_artifact)
-		for progress in ff.run_command_with_progress():
-			print(f"{progress}/100")
 
 		print("=")
 		print("=")
